@@ -5,15 +5,24 @@
 # Each inner list corresponds to a row, where the element at column j (0‑based) equals (i+1) * (j+1).
 
 
-n = int(input("Enter a value = "))
-res = []
-for i in range(n):
-    row = []
-    for j in range(n):
-        total = (i+1) * (j+1)
-        row.append((total))
-    res.append(row)
-print(res)
+def multiplication_table(n: int) -> List[List[int]]:
+    result = []
+
+    for i in range(n):
+        row = []
+
+        for j in range(n):
+            row.append((i + 1) * (j + 1))
+
+        result.append(row)
+
+    return result
+
+
+n = int(input("Enter a number: "))
+
+print(multiplication_table(n))
+
 
 # Pattern Printing – Right‑Aligned Triangle
 # Implement a function right_aligned_triangle(height: int) -> List[str] 
@@ -22,15 +31,26 @@ print(res)
 # The first line contains one asterisk right‑aligned to the width height,
 #  the second line contains two, and so on until height asterisks.
 
-n =int(input("Enter a value = "))
 
-for i in range(1,n+1):
-    for j in range(n-i):
-        print(" ",end=" ")
-    for k in range(i):
-        print("*",end=" ")
-    print()
-    
+
+
+def right_aligned_triangle(height: int) -> List[str]:
+    result = []
+
+    for i in range(1, height + 1):
+        row = ""
+        for j in range(height - i):
+            row += "  "
+        for k in range(i):
+            row += "* "
+        result.append(row.rstrip())
+    return result
+
+n = int(input("Enter height: "))
+res = right_aligned_triangle(n)
+for row in res:
+    print(row)
+
 
 # Unique Pair Sum Finder
 # Create a function pair_sums(nums: List[int]) -> Set[Tuple[int, int]] 
